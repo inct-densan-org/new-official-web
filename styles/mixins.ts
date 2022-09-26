@@ -1,18 +1,20 @@
 /**
- * ラップトップ端末かどうかのフラグを返す
+ * ラップトップ端末かどうかを調べるためのCSSを返す
  */
 const checkIsLp = () => {
-
+  return `@media screen and ( min-width: 1024px )`
 }
 
 /**
- * モバイル端末かどうかのフラグを返す
+ * モバイル端末かどうかを調べるためのCSSを返す
  */
 const checkIsSp = () => {
-
+  return `@media screen and ( min-width: 240px ) and ( max-width: 1024px )`
 }
 
-export {
+const mixins = {
   checkIsLp,
   checkIsSp
 }
+
+export default mixins

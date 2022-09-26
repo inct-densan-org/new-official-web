@@ -1,0 +1,22 @@
+{
+  "presets": ["next/babel"],
+  "plugins": [
+    ["babel-plugin-styled-components", {
+      "ssr": true,
+      "displayName": true,
+      "preprocess": false
+    }]
+  ],
+  "env": {
+    // ビルドしたファイルからはクラス名を知る必要はないため、
+    // "displayName": falseにして少しでもwebページの解析速度を上げる
+    "production": {
+      "plugins": [
+        [
+          "babel-plugin-styled-components",
+          { "ssr": true, "displayName": false, "preprocess": false }
+        ]
+      ]
+    }
+  }
+}

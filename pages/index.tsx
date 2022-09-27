@@ -1,15 +1,25 @@
-import type { NextPage, NextPageWithLayout } from 'next'
+import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
-import Layout from '~/layouts/Layout'
-import styles from '../styles/Home.module.css'
+import styled from 'styled-components'
 
-const Index: NextPageWithLayout  = () => {
+const IndexMain = styled.div`
+  .title {
+    
+  }
+`
+
+const Index: NextPage = () => {
   return <>
-    <div>asd</div>
+    <Head>
+      <title>一関高専 - 電子計算機部</title>
+      <meta name="description" content="INCT Densan homepage" />
+      <link rel="icon" href="/favicon.ico" />
+    </Head>
+
+    <IndexMain>
+      asd
+    </IndexMain>
   </>
 }
-
-Index.getLayout = (page) => <Layout metaTitle='INDEX'>{ page }</Layout>
 
 export default Index

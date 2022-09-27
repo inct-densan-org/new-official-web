@@ -2,6 +2,7 @@ import { ReactNode } from 'react'
 import styled from 'styled-components'
 import Head from 'next/head'
 import colors from '~/styles/colors'
+import mixins from '~/styles/mixins'
 
 type LayoutProps = Required<{
   readonly children: ReactNode
@@ -16,8 +17,8 @@ const Layout = ({ children, metaTitle }: LayoutProps) => {
   return <>
     <LayoutMain>
       <Head>
-        <title>{metaTitle}&#65372;takuma-ru</title>
-        <meta name="description" content="INCT Denasan homepage" />
+        <title>{metaTitle}&#65372;一関高専 - 電子計算機部</title>
+        <meta name="description" content="INCT Densan homepage" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -41,10 +42,10 @@ const LayoutMain = styled.div`
 const Main = styled.main`
   grid-column: 2;
   grid-row: 2;
-  /* ${mixins.screenSm} {
+  ${mixins.checkIsSp} {
     grid-column: 1/4;
     grid-row: 2/4;
-  } */
+  }
   justify-self: start;
   align-self: flex-start;
 

@@ -2,13 +2,16 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
+import Button from '~/components/utils/Button'
 
 const IndexMain = styled.div`
   display: flex;
-  width: 100vw;
-  height: 100vh;
   justify-content: center;
   align-items: center;
+  flex-flow: column;
+
+  width: 100vw;
+  height: 100vh;
 
   .title {
     text-align: center;
@@ -55,6 +58,7 @@ const Index: NextPage = () => {
         <h1>電子計算機部</h1>
         <p>- 指先から世界を変える -</p>
       </motion.div>
+      <Button>我が部について</Button>
     </IndexMain>
   </>
 }

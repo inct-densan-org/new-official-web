@@ -1,4 +1,4 @@
-import { ColorsInterface } from "../types/styles/colors"
+import { ColorsInterface } from '../types/styles/colors'
 
 const colors: ColorsInterface = {
   white: {

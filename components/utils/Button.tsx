@@ -35,7 +35,7 @@ const Button: React.FC<propsInterface> = (props) => {
 
   return <>
     <Button onClick={ props.onClick }>
-      { props.icon && <Icon icon={ props.icon } style={{ marginRight: '0.25em' }} /> }
+      { props.icon && <Icon icon={ props.icon } style={{ marginRight: '0.5em' }} /> }
       <span className='text'>
         { props.children }
       </span>

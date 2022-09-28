@@ -58,7 +58,7 @@ const Index: NextPage = () => {
         <h1>電子計算機部</h1>
         <p>- 指先から世界を変える -</p>
       </motion.div>
-      <Button icon='face'>我が部について</Button>
+      <Button icon='groups'>我が部について</Button>
     </IndexMain>
   </>
 }

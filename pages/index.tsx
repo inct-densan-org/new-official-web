@@ -38,6 +38,9 @@ const Index: NextPage = () => {
 
     <IndexMain>
       <motion.div
+        whileHover={{
+          // scale: 1.5
+        }}
         initial={{
           opacity: 0,
           scale: 0
@@ -48,7 +51,6 @@ const Index: NextPage = () => {
         }}
         transition={{
           type: 'spring',
-          delay: 0.5,
           stiffness: 260,
           damping: 16
         }}

@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 import colors from '~/styles/colors'
@@ -18,10 +19,11 @@ interface stateInterface {
 }
 
 const Button: React.FC<propsInterface> = (props) => {
-  const Button = styled.button`
+  const Button = styled(motion.button)`
     display: inline-flex;
     align-items: center;
 
+    position: relative;
     padding: 0.5em 1.5em;
 
     color: ${ dependsLuminanceColor(props.color!) };
@@ -31,10 +33,37 @@ const Button: React.FC<propsInterface> = (props) => {
     border: none;
     border-radius: 0.5em;
     cursor: pointer;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+    user-select: none;
+
+    &:hover {
+      &::after {
+        content: '';
+        position: absolute;
+        z-index: 1;
+        top: 0%;
+        left: 0%;
+        width: 100%;
+        height: 100%;
+
+        border-radius: 0.5em;
+        background-color: #00000022;
+        opacity: 1;
+
+        transition: all 100ms;
+      }
+    }
   `
 
+  const handleOnClick = () => {
+    return props.onClick
+  }
+
   return <>
-    <Button onClick={ props.onClick }>
+    <Button
+      whileTap={{ scale: 0.99 }}
+      onClick={ handleOnClick }
+    >
       { props.icon && <Icon icon={ props.icon } style={{ marginRight: '0.5em' }} /> }
       <span className='text'>
         { props.children }

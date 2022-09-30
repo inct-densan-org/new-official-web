@@ -7,11 +7,10 @@ import { IconNameType } from '~/types/icon/iconName'
 import Icon from './Icon'
 
 interface propsInterface {
-  type?: 'default' | 'vertical'
   color?: string
   icon?: IconNameType
-  iconTop?: boolean
-  children: ReactNode
+  children?: ReactNode
+  style?: React.CSSProperties
   onClick?: () => void
 }
 
@@ -20,18 +19,22 @@ interface stateInterface {
 
 const Button: React.FC<propsInterface> = (props) => {
   const Button = styled(motion.button)`
-    display: inline-flex;
+    display: grid;
+    grid-template-columns: auto 1fr;
     align-items: center;
 
     position: relative;
-    padding: 0.5em 1.5em;
+    z-index: 0;
+    padding: 0.5rem 1.5rem;
+    margin: 0.25rem;
 
     color: ${ dependsLuminanceColor(props.color!) };
+    text-align: center;
     font-weight: 600;
     font-size: 14px;
     background-color: ${ props.color };
-    border: none;
-    border-radius: 0.5em;
+    border: solid 1px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
     cursor: pointer;
     -webkit-tap-highlight-color:rgba(0,0,0,0);
     user-select: none;
@@ -46,12 +49,16 @@ const Button: React.FC<propsInterface> = (props) => {
         width: 100%;
         height: 100%;
 
-        border-radius: 0.5em;
-        background-color: #00000022;
+        border-radius: 0.48rem;
+        background-color: #00000021;
         opacity: 1;
 
         transition: all 100ms;
       }
+    }
+
+    .text {
+      justify-self: center;
     }
   `
 
@@ -61,10 +68,11 @@ const Button: React.FC<propsInterface> = (props) => {
 
   return <>
     <Button
-      whileTap={{ scale: 0.99 }}
+      whileTap={{ scale: 0.98 }}
+      style={ props.style }
       onClick={ handleOnClick }
     >
-      { props.icon && <Icon icon={ props.icon } style={{ marginRight: '0.5em' }} /> }
+      { props.icon && <Icon icon={ props.icon } style={{ marginRight: '1rem' }} /> }
       <span className='text'>
         { props.children }
       </span>

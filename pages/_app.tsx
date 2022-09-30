@@ -11,7 +11,8 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       padding: 0;
       margin: 0;
       font-family: 'Noto Sans JP', sans-serif;
-      color: ${ colors.black.default }
+      color: ${ colors.black.default };
+      background-color: ${ colors.white.default };
     }
 
     a {
@@ -23,15 +24,15 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       box-sizing: border-box;
     }
 
-    @media (prefers-color-scheme: dark) {
+    /* @media (prefers-color-scheme: dark) {
       html {
         color-scheme: dark;
       }
       body {
         color: ${ colors.white.default };
-        background: ${ colors.black.default };
+        background: ${ colors.black.darken[2] };
       }
-    }
+    } */
   `
 
   return <>

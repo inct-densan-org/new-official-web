@@ -16,5 +16,5 @@ export const dependsLuminanceColor = (backgroundColor: string) => {
 
   const isWhite = luminance < 0.6
 
-  return isWhite ? colors.white.darken[2] : colors.black.default
+  return isWhite ? colors.white.default : colors.black.default
 }

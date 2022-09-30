@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Head from 'next/head'
 import colors from '~/styles/colors'
 import mixins from '~/styles/mixins'
+import Header from '~/components/layouts/Header'
 
 type LayoutProps = Required<{
   readonly children: ReactNode
@@ -22,6 +23,8 @@ const Layout = ({ children, metaTitle }: LayoutProps) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <Header />
+
       <Main>
         {children}
       </Main>
@@ -34,8 +37,8 @@ const LayoutMain = styled.div`
   width: 100vw;
   height: 100vh;
 
-  grid-template-columns: 56px 1fr 56px;
-  grid-template-rows: 56px calc(100vh - 56px - 56px) 56px;
+  grid-template-columns: 40px 1fr 40px;
+  grid-template-rows: 56px calc(100vh - 56px - 40px) 40px;
   align-items: center;
 `
 

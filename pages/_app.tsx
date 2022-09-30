@@ -1,9 +1,9 @@
-import type { AppProps } from 'next/app'
+import type { AppPropsWithLayout } from 'next/app'
 import { createGlobalStyle } from 'styled-components'
 import 'material-symbols'
 import colors from '~/styles/colors'
 
-const MyApp = ({ Component, pageProps }: AppProps) => {
+const MyApp = ({ Component, pageProps }: AppPropsWithLayout ) => {
   const GlobalStyle = createGlobalStyle`
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap');
 
@@ -35,10 +35,14 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     } */
   `
 
-  return <>
-    <GlobalStyle />
-    <Component {...pageProps} />
-  </>
+  const getLayout = Component.getLayout ?? ((page) => page)
+
+  return getLayout(
+    <>
+      <GlobalStyle />
+      <Component {...pageProps} />
+    </>
+  )
 }
 
 export default MyApp

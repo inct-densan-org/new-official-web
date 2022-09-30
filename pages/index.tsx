@@ -3,8 +3,8 @@ import Head from 'next/head'
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import Button from '~/components/utils/Button'
-import backgroundImg from '~/assets/imgs/abstract_banner_with_cyber_particles_design_2003.webp'
 import colors from '~/styles/colors'
+import { routerPathLists } from '~/utils/routerLinks'
 
 const IndexMain = styled.div`
   display: flex;
@@ -88,11 +88,20 @@ const Index: NextPage = () => {
         <h1>電子計算機部</h1>
         <p>- 指先から世界を変える -</p>
       </motion.div>
-      <hr />
+      <motion.hr />
       <div className='buttons'>
-        <Button icon='groups'>我が部について</Button>
-        <Button icon='military_tech'>実績</Button>
-        <Button icon='code'>保有スキル</Button>
+        {
+          routerPathLists.map(link => {
+            return <>
+              <Button
+                icon={link.icon}
+                link={link.link}
+              >
+                { link.node }
+              </Button>
+            </>
+          })
+        }
       </div>
     </IndexMain>
   </>

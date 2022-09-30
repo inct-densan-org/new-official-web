@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import router from 'next/router'
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 import colors from '~/styles/colors'
@@ -11,6 +12,7 @@ interface propsInterface {
   icon?: IconNameType
   children?: ReactNode
   style?: React.CSSProperties
+  link?: string
   onClick?: () => void
 }
 
@@ -33,7 +35,7 @@ const Button: React.FC<propsInterface> = (props) => {
     font-weight: 600;
     font-size: 14px;
     background-color: ${ props.color };
-    border: solid 1px rgba(0, 0, 0, 0.1);
+    border: solid 1px #ffffff3d;
     border-radius: 0.5rem;
     cursor: pointer;
     -webkit-tap-highlight-color:rgba(0,0,0,0);
@@ -50,7 +52,7 @@ const Button: React.FC<propsInterface> = (props) => {
         height: 100%;
 
         border-radius: 0.48rem;
-        background-color: #00000021;
+        background-color: #ffffff20;
         opacity: 1;
 
         transition: all 100ms;
@@ -63,7 +65,7 @@ const Button: React.FC<propsInterface> = (props) => {
   `
 
   const handleOnClick = () => {
-    return props.onClick
+    return props.link ? router.push(props.link) : props.onClick
   }
 
   return <>

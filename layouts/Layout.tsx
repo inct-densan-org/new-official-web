@@ -26,6 +26,10 @@ const Layout = ({ children, metaTitle }: LayoutProps) => {
       <Header />
 
       <Main>
+        <div className='meta-title'>
+          { metaTitle }
+          <hr />
+        </div>
         {children}
       </Main>
     </LayoutMain>
@@ -54,9 +58,14 @@ const Main = styled.main`
 
   width: 100%;
   height: 100%;
-  padding-top: 16px;
+  padding-top: 2rem;
 
   color: ${colors.black.default};
+
+  .meta-title {
+    font-size: 2rem;
+    text-align: center;
+  }
 `
 
 export default Layout

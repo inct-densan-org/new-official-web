@@ -17,6 +17,7 @@ const Header: React.FC<propsInterface> = (props) => {
   const Header = styled.header`
     display: flex;
     align-items: center;
+    justify-content: center;
 
     width: 100vw;
     height: 64px;

@@ -54,7 +54,7 @@ const Main = styled.main`
 
   width: 100%;
   height: 100%;
-  padding: 16px;
+  padding-top: 16px;
 
   color: ${colors.black.default};
 `

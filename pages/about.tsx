@@ -1,9 +1,16 @@
 import type { NextPageWithLayout } from 'next'
+import styled from 'styled-components'
 import Layout from '~/layouts/Layout'
 
 const About: NextPageWithLayout  = () => {
+  const AboutMain = styled.div`
+    
+  `
+
   return <>
-    <div>about</div>
+    <AboutMain>
+      about
+    </AboutMain>
   </>
 }
 

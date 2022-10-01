@@ -5,8 +5,6 @@ import colors from '~/styles/colors'
 
 const MyApp = ({ Component, pageProps }: AppPropsWithLayout ) => {
   const GlobalStyle = createGlobalStyle`
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap');
-
     body {
       padding: 0;
       margin: 0;

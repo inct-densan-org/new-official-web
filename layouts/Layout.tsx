@@ -4,6 +4,7 @@ import Head from 'next/head'
 import colors from '~/styles/colors'
 import mixins from '~/styles/mixins'
 import Header from '~/components/layouts/Header'
+import { useRouter } from 'next/router'
 
 type LayoutProps = Required<{
   readonly children: ReactNode
@@ -12,6 +13,7 @@ type LayoutProps = Required<{
 
 const Layout = ({ children, metaTitle }: LayoutProps) => {
   // const
+  const router = useRouter()
 
   // method
 
@@ -27,7 +29,12 @@ const Layout = ({ children, metaTitle }: LayoutProps) => {
 
       <Main>
         <div className='meta-title'>
-          { metaTitle }
+          <h1>
+            { metaTitle }
+          </h1>
+          <p>
+            { router.pathname }
+          </p>
           <hr />
         </div>
         {children}
@@ -49,10 +56,6 @@ const LayoutMain = styled.div`
 const Main = styled.main`
   grid-column: 2;
   grid-row: 2;
-  ${mixins.checkIsSp} {
-    grid-column: 1/4;
-    grid-row: 2/4;
-  }
   justify-self: start;
   align-self: flex-start;
 
@@ -63,7 +66,11 @@ const Main = styled.main`
   color: ${colors.black.default};
 
   .meta-title {
-    font-size: 2rem;
+    min-width: 30%;
+    width: fit-content;
+    margin: auto;
+    padding-bottom: 1rem;
+
     text-align: center;
   }
 `

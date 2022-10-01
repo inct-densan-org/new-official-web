@@ -11,7 +11,7 @@ export const routerPathLists: Array<RouterPathInterface> = [
   {
     icon: 'groups',
     link: '/about',
-    node: '我が部について'
+    node: '電算部とは？'
   },
   {
     icon: 'military_tech',

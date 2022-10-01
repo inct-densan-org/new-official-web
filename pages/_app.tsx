@@ -22,6 +22,10 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout ) => {
       box-sizing: border-box;
     }
 
+    hr {
+      border-color: ${colors.white.darken[1]};
+    }
+
     /* @media (prefers-color-scheme: dark) {
       html {
         color-scheme: dark;

@@ -18,7 +18,6 @@ const IndexMain = styled.div`
 
   hr {
     width: 50%;
-    border-color: ${colors.white.darken[1]};
   }
 
   .title {

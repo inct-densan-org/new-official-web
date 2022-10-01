@@ -1,12 +1,23 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import styled from 'styled-components'
-import { motion } from 'framer-motion'
+import { motion, useMotionValue } from 'framer-motion'
 import Button from '~/components/utils/Button'
 import colors from '~/styles/colors'
 import { routerPathLists } from '~/utils/routerLinks'
+import { useState } from 'react'
 
-const IndexMain = styled.div`
+const Index: NextPage = () => {
+  const [ mousePosition, setMousePosition ] = useState({ x: 0, y: 0 })
+  const x = useMotionValue(100)
+  const y = useMotionValue(100)
+
+  const getMousePosition: React.MouseEventHandler = (event) => {
+    x.set(event.pageX - 48)
+    y.set(event.pageY - 48)
+  }
+
+  const IndexMain = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,9 +26,37 @@ const IndexMain = styled.div`
   position: relative;
   width: 100vw;
   height: 100vh;
+  cursor: none;
 
   hr {
     width: 50%;
+  }
+
+  .pointer {
+    position: fixed;
+    z-index: 9999;
+    width: 6rem;
+    height: 6rem;
+
+    background-color: ${ colors.white.default };
+    border-radius: 50%;
+    mix-blend-mode: difference;
+    pointer-events: none;
+
+    ::after {
+      position: absolute;
+      content: '';
+      width: 0.5rem;
+      height: 0.5rem;
+      top: 50%;
+      left: 50%;
+
+      transform: translate(-50%, -50%);
+      background-color: ${ colors.white.default };
+      border-radius: 50%;
+      mix-blend-mode: difference;
+      pointer-events: none;
+    }
   }
 
   .title {
@@ -54,7 +93,6 @@ const IndexMain = styled.div`
   }
 `
 
-const Index: NextPage = () => {
   return <>
     <Head>
       <title>一関高専 - 電子計算機部</title>
@@ -62,12 +100,15 @@ const Index: NextPage = () => {
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
-    <IndexMain>
-
+    <IndexMain onMouseMove={getMousePosition}>
       <motion.div
-        whileHover={{
-          // scale: 1.5
+        className='pointer'
+        style={{
+          top: y,
+          left: x,
         }}
+      />
+      <motion.div
         initial={{
           opacity: 0,
           scale: 0
@@ -95,6 +136,9 @@ const Index: NextPage = () => {
               <Button
                 icon={link.icon}
                 link={link.link}
+                style={{
+                  cursor: 'none'
+                }}
               >
                 { link.node }
               </Button>

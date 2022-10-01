@@ -25,6 +25,10 @@ const About: NextPageWithLayout  = () => {
 
       margin-bottom: 0%;
     }
+
+    span {
+      margin: 0.5rem 0%;
+    }
   `
 
   const activityDetails: Array<ActivityDetailInterface> = [
@@ -69,7 +73,7 @@ const About: NextPageWithLayout  = () => {
   return <>
     <AboutMain>
       {
-        activityDetails.map(detail => {
+        activityDetails.map((detail, i) => {
           return <>
             <h2>
               <Icon
@@ -80,9 +84,9 @@ const About: NextPageWithLayout  = () => {
               />
               { detail.title }
             </h2>
-            <p>
+            <span>
               { detail.detail }
-            </p>
+            </span>
           </>
         })
       }

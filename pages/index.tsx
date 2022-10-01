@@ -1,20 +1,38 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import styled from 'styled-components'
-import { motion, useMotionValue } from 'framer-motion'
+import { animate, motion, useAnimationControls, useMotionValue } from 'framer-motion'
 import Button from '~/components/utils/Button'
 import colors from '~/styles/colors'
 import { routerPathLists } from '~/utils/routerLinks'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const Index: NextPage = () => {
-  const [ mousePosition, setMousePosition ] = useState({ x: 0, y: 0 })
+  const [ isMouseDown, updateIsMouseDown ] = useState(false)
+
   const x = useMotionValue(100)
   const y = useMotionValue(100)
+  const scale = useAnimationControls()
 
   const getMousePosition: React.MouseEventHandler = (event) => {
     x.set(event.pageX - 48)
     y.set(event.pageY - 48)
+    scale.start({
+      scale: 1,
+      transition: { duration: 1 }
+    })
+    if (!isMouseDown) {
+    }
+  }
+  const click = async () => {
+    await scale.start({
+      scale: 1.5                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ,
+      transition: { duration: 0.1 }
+    })
+    scale.start({
+      scale: 1,
+      transition: { duration: 0.1 }
+    })
   }
 
   const IndexMain = styled.div`
@@ -26,6 +44,8 @@ const Index: NextPage = () => {
   position: relative;
   width: 100vw;
   height: 100vh;
+
+  user-select: none;
   cursor: none;
 
   hr {
@@ -100,13 +120,19 @@ const Index: NextPage = () => {
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
-    <IndexMain onMouseMove={getMousePosition}>
+    <IndexMain
+      onMouseMove={getMousePosition}
+      onClick={click}
+    >
       <motion.div
-        className='pointer'
         style={{
           top: y,
           left: x,
         }}
+        animate={
+          scale
+        }
+        className='pointer'
       />
       <motion.div
         initial={{
@@ -131,7 +157,7 @@ const Index: NextPage = () => {
       <motion.hr />
       <div className='buttons'>
         {
-          routerPathLists.map(link => {
+          routerPathLists.map((link, i) => {
             return <>
               <Button
                 icon={link.icon}

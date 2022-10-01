@@ -67,7 +67,7 @@ const Header: React.FC<propsInterface> = (props) => {
       </div>
       <div className='link-buttons'>
       {
-          routerPathLists.map(link => {
+          routerPathLists.map((link, i) => {
             return <>
               <Button
                 icon={link.icon}

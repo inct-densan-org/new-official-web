@@ -1,13 +1,14 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import styled from 'styled-components'
-import { animate, motion, useAnimationControls, useMotionValue } from 'framer-motion'
+import { motion, useAnimationControls, useMotionValue } from 'framer-motion'
 import Button from '~/components/utils/Button'
 import colors from '~/styles/colors'
 import { routerPathLists } from '~/utils/routerLinks'
 import { useEffect, useState } from 'react'
 
 const Index: NextPage = () => {
+  /* styled-component */
   const IndexMain = styled.div`
     display: flex;
     justify-content: center;
@@ -86,6 +87,8 @@ const Index: NextPage = () => {
     }
   `
 
+  /* scripts */
+  const [ isMouseDown, updateIsMouseDown ] = useState(false)
   const x = useMotionValue(-100)
   const y = useMotionValue(-100)
   const pointerAnimate = useAnimationControls()
@@ -99,11 +102,14 @@ const Index: NextPage = () => {
     })
   }
 
-  const click = async () => {
+  const mouseDown = async () => {
     await pointerAnimate.start({
       scale: 0.8                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ,
       transition: { duration: 0.1 }
     })
+  }
+
+  const mouseUp = () => {
     pointerAnimate.start({
       scale: 1,
       transition: { duration: 0.1 }
@@ -116,6 +122,7 @@ const Index: NextPage = () => {
     })
   })
 
+  /* elements */
   return <>
     <Head>
       <title>一関高専 - 電子計算機部</title>
@@ -125,7 +132,8 @@ const Index: NextPage = () => {
 
     <IndexMain
       onMouseMove={getMousePosition}
-      onClick={click}
+      onMouseDown={mouseDown}
+      onMouseUp={mouseUp}
     >
       <motion.div
         style={{

@@ -67,9 +67,10 @@ const Header: React.FC<propsInterface> = (props) => {
       </div>
       <div className='link-buttons'>
       {
-          routerPathLists.map((link, i) => {
+          routerPathLists.map((link, index) => {
             return <>
               <Button
+                key={index}
                 icon={link.icon}
                 link={link.link}
                 color={link.link === path ? colors.white.darken[2] : 'transparent'}

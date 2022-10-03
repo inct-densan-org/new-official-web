@@ -73,7 +73,7 @@ const About: NextPageWithLayout  = () => {
   return <>
     <AboutMain>
       {
-        activityDetails.map((detail, i) => {
+        activityDetails.map((detail, index) => {
           return <>
             <h2>
               <Icon

@@ -8,110 +8,113 @@ import { routerPathLists } from '~/utils/routerLinks'
 import { useEffect, useState } from 'react'
 
 const Index: NextPage = () => {
-  const [ isMouseDown, updateIsMouseDown ] = useState(false)
-
-  const x = useMotionValue(100)
-  const y = useMotionValue(100)
-  const scale = useAnimationControls()
-
-  const getMousePosition: React.MouseEventHandler = (event) => {
-    x.set(event.pageX - 48)
-    y.set(event.pageY - 48)
-    scale.start({
-      scale: 1,
-      transition: { duration: 1 }
-    })
-    if (!isMouseDown) {
-    }
-  }
-  const click = async () => {
-    await scale.start({
-      scale: 1.5                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ,
-      transition: { duration: 0.1 }
-    })
-    scale.start({
-      scale: 1,
-      transition: { duration: 0.1 }
-    })
-  }
-
   const IndexMain = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-flow: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
 
-  position: relative;
-  width: 100vw;
-  height: 100vh;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
 
-  user-select: none;
-  cursor: none;
+    user-select: none;
+    cursor: none;
 
-  hr {
-    width: 50%;
-  }
+    hr {
+      width: 50%;
+    }
 
-  .pointer {
-    position: fixed;
-    z-index: 9999;
-    width: 6rem;
-    height: 6rem;
+    .pointer {
+      position: fixed;
+      z-index: 9999;
+      width: 6rem;
+      height: 6rem;
 
-    background-color: ${ colors.white.default };
-    border-radius: 50%;
-    mix-blend-mode: difference;
-    pointer-events: none;
-
-    ::after {
-      position: absolute;
-      content: '';
-      width: 0.5rem;
-      height: 0.5rem;
-      top: 50%;
-      left: 50%;
-
-      transform: translate(-50%, -50%);
       background-color: ${ colors.white.default };
       border-radius: 50%;
       mix-blend-mode: difference;
       pointer-events: none;
+
+      ::after {
+        position: absolute;
+        content: '';
+        width: 0.5rem;
+        height: 0.5rem;
+        top: 50%;
+        left: 50%;
+
+        transform: translate(-50%, -50%);
+        background-color: ${ colors.white.default };
+        border-radius: 50%;
+        mix-blend-mode: difference;
+        pointer-events: none;
+      }
     }
+
+    .title {
+      text-align: center;
+
+      h1 {
+        margin: 0px;
+
+        font-size: 5rem;
+      }
+
+      p {
+        font-size: 1.5rem;
+      }
+    }
+
+    .buttons {
+      display: flex;
+      flex-flow: column;
+
+      position: relative;
+      padding: 3rem 1rem;
+
+      &::before {
+        content: '- links -';
+        position: absolute;
+        top: 1rem;
+        left: 50%;
+
+        transform: translateX(-50%);
+        color: ${colors.black.lighten[1]};
+        font-size: 0.9rem;
+      }
+    }
+  `
+
+  const x = useMotionValue(-100)
+  const y = useMotionValue(-100)
+  const pointerAnimate = useAnimationControls()
+
+  const getMousePosition: React.MouseEventHandler = (event) => {
+    x.set(event.pageX - 48)
+    y.set(event.pageY - 48)
+    pointerAnimate.start({
+      scale: 1,
+      transition: { duration: 0.05 }
+    })
   }
 
-  .title {
-    text-align: center;
-
-    h1 {
-      margin: 0px;
-
-      font-size: 5rem;
-    }
-
-    p {
-      font-size: 1.5rem;
-    }
+  const click = async () => {
+    await pointerAnimate.start({
+      scale: 0.8                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ,
+      transition: { duration: 0.1 }
+    })
+    pointerAnimate.start({
+      scale: 1,
+      transition: { duration: 0.1 }
+    })
   }
 
-  .buttons {
-    display: flex;
-    flex-flow: column;
-
-    position: relative;
-    padding: 3rem 1rem;
-
-    &::before {
-      content: '- links -';
-      position: absolute;
-      top: 1rem;
-      left: 50%;
-
-      transform: translateX(-50%);
-      color: ${colors.black.lighten[1]};
-      font-size: 0.9rem;
-    }
-  }
-`
+  useEffect(() => {
+    pointerAnimate.set({
+      scale: 0
+    })
+  })
 
   return <>
     <Head>
@@ -130,7 +133,7 @@ const Index: NextPage = () => {
           left: x,
         }}
         animate={
-          scale
+          pointerAnimate
         }
         className='pointer'
       />
@@ -157,11 +160,13 @@ const Index: NextPage = () => {
       <motion.hr />
       <div className='buttons'>
         {
-          routerPathLists.map((link, i) => {
+          routerPathLists.map((link, index) => {
             return <>
               <Button
+                key={index}
                 icon={link.icon}
                 link={link.link}
+                color={colors.black.default}
                 style={{
                   cursor: 'none'
                 }}

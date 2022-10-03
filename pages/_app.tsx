@@ -8,9 +8,11 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout ) => {
     body {
       padding: 0;
       margin: 0;
+
       font-family: 'Noto Sans JP', sans-serif;
       color: ${ colors.black.default };
       background-color: ${ colors.white.default };
+      overscroll-behavior-y: none;
     }
 
     a {

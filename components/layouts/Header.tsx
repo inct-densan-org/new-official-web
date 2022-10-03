@@ -19,6 +19,9 @@ const Header: React.FC<propsInterface> = (props) => {
     align-items: center;
     justify-content: center;
 
+    position: fixed;
+    top: 0px;
+    left: 0px;
     width: 100vw;
     height: 64px;
     padding: 1rem 2rem;

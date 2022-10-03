@@ -17,6 +17,8 @@ const About: NextPageWithLayout  = () => {
     flex-flow: column;
     align-items: center;
 
+    padding-bottom: 4rem;
+
     text-align: center;
 
     h2 {

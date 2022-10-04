@@ -11,7 +11,7 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout ) => {
 
       font-family: 'Noto Sans JP', sans-serif;
       color: ${ colors.black.default };
-      background-color: ${ colors.white.default };
+      background-color: ${ colors.white.darken[1] };
       overscroll-behavior-y: none;
     }
 

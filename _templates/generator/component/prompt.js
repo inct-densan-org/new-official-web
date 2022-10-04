@@ -11,5 +11,12 @@ module.exports = [
     name: 'componentName',
     message: 'Input component name',
     validate: (input) => input !== '',
+  },
+  {
+    type: 'confirm',
+    name: 'isUseMotion',
+    message: 'Use Framer-motion ?',
+    choices: [ 'Yes', 'No' ],
+    initial: 'Yes',
   }
 ]

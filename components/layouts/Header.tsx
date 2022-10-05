@@ -7,13 +7,13 @@ import { routerPathLists } from '~/utils/routerLinks'
 import Button from '../utils/Button'
 import colors from '~/styles/colors'
 
-interface propsInterface {
+interface PropsInterface {
 }
 
 interface stateInterface {
 }
 
-const Header: React.FC<propsInterface> = (props) => {
+const Header: React.FC<PropsInterface> = (props) => {
   const Header = styled.header`
     display: flex;
     align-items: center;

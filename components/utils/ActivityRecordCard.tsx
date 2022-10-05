@@ -4,18 +4,19 @@ import styled from 'styled-components'
 import colors from '~/styles/colors'
 import Icon from './Icon'
 
-interface propsInterface {
+interface PropsInterface {
   contestName: string
   record: string
   year: number
 }
 
-const ActivityRecordCard: React.FC<propsInterface> = (props) => {
+const ActivityRecordCard: React.FC<PropsInterface> = (props) => {
   /*-- styled-component --*/
     const ActivityRecordCardMain = styled(motion.div)`
       display: flex;
       flex-flow: column;
 
+      position: relative;
       min-height: 5rem;
       padding: 1rem  1.5rem;
       margin: 0.5rem;
@@ -39,6 +40,12 @@ const ActivityRecordCard: React.FC<propsInterface> = (props) => {
           color: ${colors.black.lighten[1]};
         }
       }
+
+      .open-icon {
+        position: absolute;
+        bottom: 0.5rem;
+        right: 1rem;
+      }
     `
 
   /*-- variables--*/
@@ -54,13 +61,24 @@ const ActivityRecordCard: React.FC<propsInterface> = (props) => {
         { props.contestName }
       </h3>
       <span className='record'>
-        <Icon icon='military_tech' />
+        <Icon
+          icon='military_tech'
+          fill
+        />
         &ensp;{ props.record }
       </span>
       <span className='year'>
-        <Icon icon='event' />
+        <Icon
+          icon='event'
+          fill
+        />
         &ensp;{ props.year }年
       </span>
+      <div className='open-icon'>
+        <Icon
+          icon='import_contacts'
+        />
+      </div>
     </ActivityRecordCardMain>
   </>
 }

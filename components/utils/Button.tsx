@@ -5,21 +5,20 @@ import styled from 'styled-components'
 import colors from '~/styles/colors'
 import { dependsLuminanceColor } from '~/styles/dependsLuminanceColor'
 import { IconNameType } from '~/types/icon/iconName'
+import { PropsInterface as IconProps } from './Icon'
 import Icon from './Icon'
 
-interface propsInterface {
+interface PropsInterface {
   color?: string
   icon?: IconNameType
+  iconProp?: IconProps
+  link?: string
   children?: ReactNode
   style?: React.CSSProperties
-  link?: string
   onClick?: () => void
 }
 
-interface stateInterface {
-}
-
-const Button: React.FC<propsInterface> = (props) => {
+const Button: React.FC<PropsInterface> = (props) => {
   const Button = styled(motion.button)`
     display: grid;
     grid-template-columns: auto 1fr;
@@ -71,10 +70,21 @@ const Button: React.FC<propsInterface> = (props) => {
   return <>
     <Button
       whileTap={{ scale: 0.98 }}
-      style={ props.style }
-      onClick={ handleOnClick }
+      style={props.style}
+      onClick={handleOnClick}
     >
-      { props.icon && <Icon icon={ props.icon } style={{ marginRight: '1rem' }} /> }
+      {
+        props.icon &&
+          <Icon
+            icon={props.icon}
+            color={props.iconProp?.color ? props.iconProp?.color : dependsLuminanceColor(props.color!)}
+            fill={props.iconProp?.fill}
+            weight={props.iconProp?.weight}
+            grade={props.iconProp?.grade}
+            opticalSize={props.iconProp?.opticalSize}
+            style={{ marginRight: '1rem' }}
+          />
+      }
       <span className='text'>
         { props.children }
       </span>

@@ -8,10 +8,10 @@ import { motion } from 'framer-motion'
 import React from 'react'
 import styled from 'styled-components'
 
-interface propsInterface {
+interface PropsInterface {
 }
 
-const <%= h.changeCase.pascal(componentName) %>: React.FC<propsInterface> = (props) => {
+const <%= h.changeCase.pascal(componentName) %>: React.FC<PropsInterface> = (props) => {
   /*-- styled-component --*/
   <% if (isUseMotion) { -%>
   const <%= h.changeCase.pascal(componentName) %>Main = styled(motion.div)`

@@ -8,6 +8,7 @@ interface PropsInterface {
   contestName: string
   record: string
   year: number
+  delay?: number
 }
 
 const ActivityRecordCard: React.FC<PropsInterface> = (props) => {
@@ -65,7 +66,8 @@ const ActivityRecordCard: React.FC<PropsInterface> = (props) => {
       }}
       transition={{
         type: 'spring',
-        duration: 0.5
+        duration: 0.75,
+        delay: props.delay
       }}
     >
       <h3>

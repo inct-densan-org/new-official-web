@@ -9,38 +9,58 @@ const Activities: NextPageWithLayout  = () => {
     grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
   `
 
+  const recordLists = [
+    {
+      contestName: 'コンテスト名1',
+      record: '優勝',
+      year: 2022
+    },
+    {
+      contestName: 'コンテスト名1',
+      record: '優勝',
+      year: 2022
+    },
+    {
+      contestName: 'コンテスト名1',
+      record: '優勝',
+      year: 2022
+    },
+    {
+      contestName: 'コンテスト名1',
+      record: '優勝',
+      year: 2022
+    },
+    {
+      contestName: 'コンテスト名1',
+      record: '優勝',
+      year: 2022
+    },
+    {
+      contestName: 'コンテスト名1',
+      record: '優勝',
+      year: 2022
+    },
+    {
+      contestName: 'コンテスト名1',
+      record: '優勝',
+      year: 2022
+    },
+  ]
+
   return <>
     <ActivitiesMain>
-      <ActivityRecordCard
-        contestName='コンテスト名'
-        record='優勝'
-        year={2022}
-      />
-      <ActivityRecordCard
-        contestName='コンテスト名'
-        record='優勝'
-        year={2022}
-      />
-      <ActivityRecordCard
-        contestName='コンテスト名'
-        record='優勝'
-        year={2022}
-      />
-      <ActivityRecordCard
-        contestName='コンテスト名'
-        record='優勝'
-        year={2022}
-      />
-      <ActivityRecordCard
-        contestName='コンテスト名'
-        record='優勝'
-        year={2022}
-      />
-      <ActivityRecordCard
-        contestName='コンテスト名'
-        record='優勝'
-        year={2022}
-      />
+      {
+        recordLists.map((record, index) => {
+          return <>
+            <ActivityRecordCard
+              contestName={record.contestName}
+              record={record.record}
+              year={record.year}
+              delay={index * 0.05}
+            />
+          </>
+        })
+      }
     </ActivitiesMain>
   </>
 }

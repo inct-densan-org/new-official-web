@@ -1,6 +1,7 @@
 import type { NextPageWithLayout } from 'next'
 import styled from 'styled-components'
 import ActivityRecordCard from '~/components/utils/ActivityRecordCard'
+import Dialog from '~/components/utils/Dialog'
 import Layout from '~/layouts/Layout'
 
 const Activities: NextPageWithLayout  = () => {
@@ -61,6 +62,9 @@ const Activities: NextPageWithLayout  = () => {
           </>
         })
       }
+      <Dialog model>
+        asd
+      </Dialog>
     </ActivitiesMain>
   </>
 }

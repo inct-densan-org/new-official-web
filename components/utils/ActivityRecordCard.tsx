@@ -66,7 +66,7 @@ const ActivityRecordCard: React.FC<PropsInterface> = (props) => {
       }}
       transition={{
         type: 'spring',
-        duration: 0.75,
+        duration: 0.6,
         delay: props.delay
       }}
     >

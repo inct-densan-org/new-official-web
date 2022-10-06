@@ -14,21 +14,22 @@ interface PropsInterface {
 const <%= h.changeCase.pascal(componentName) %>: React.FC<PropsInterface> = (props) => {
   /*-- styled-component --*/
   <% if (isUseMotion) { -%>
-  const <%= h.changeCase.pascal(componentName) %>Main = styled(motion.div)`
+const <%= h.changeCase.pascal(componentName) %>Main = styled(motion.div)`
   <% } else { -%>
-  const <%= h.changeCase.pascal(componentName) %>Main = styled.div`
+const <%= h.changeCase.pascal(componentName) %>Main = styled.div`
   <% } -%>
-  `
+`
 
-  /*-- variables--*/
+  /*-- variables --*/
 
   /*-- functions --*/
 
   /*-- life cycle --*/
 
-  /*-- element  --*/
+  /*-- element --*/
   return <>
     <<%= h.changeCase.pascal(componentName) %>Main>
+      text
     </<%= h.changeCase.pascal(componentName) %>Main>
   </>
 }

@@ -8,13 +8,13 @@ const Skills: NextPageWithLayout  = () => {
   const SkillsMain = styled(motion.div)`
   `
 
-  /*-- variables--*/
+  /*-- variables --*/
 
   /*-- functions --*/
 
   /*-- life cycle --*/
 
-  /*-- element  --*/
+  /*-- element --*/
   return <>
     <SkillsMain>
       text

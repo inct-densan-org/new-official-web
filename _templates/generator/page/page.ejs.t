@@ -18,13 +18,13 @@ const <%= h.changeCase.pascal(pageName) %>Main = styled.div`
   <% } -%>
 `
 
-  /*-- variables--*/
+  /*-- variables --*/
 
   /*-- functions --*/
 
   /*-- life cycle --*/
 
-  /*-- element  --*/
+  /*-- element --*/
   return <>
     <<%= h.changeCase.pascal(pageName) %>Main>
       text

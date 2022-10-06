@@ -21,7 +21,10 @@ const Icon: React.FC<PropsInterface> = (props) => {
   `
 
   return <>
-    <Icon className='material-symbols-rounded' style={props.style}>
+    <Icon
+      className='material-symbols-rounded'
+      style={props.style}
+    >
       { props.icon }
     </Icon>
   </>

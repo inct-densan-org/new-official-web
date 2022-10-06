@@ -56,7 +56,18 @@ const ActivityRecordCard: React.FC<PropsInterface> = (props) => {
 
   /*-- element  --*/
   return <>
-    <ActivityRecordCardMain>
+    <ActivityRecordCardMain
+      initial={{
+        scale: 0
+      }}
+      animate={{
+        scale: 1
+      }}
+      transition={{
+        type: 'spring',
+        duration: 0.5
+      }}
+    >
       <h3>
         { props.contestName }
       </h3>

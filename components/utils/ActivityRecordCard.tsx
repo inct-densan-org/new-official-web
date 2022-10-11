@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion'
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import colors from '~/styles/colors'
+import Dialog from './Dialog'
 import Icon from './Icon'
 
 interface PropsInterface {
@@ -9,11 +10,13 @@ interface PropsInterface {
   record: string
   year: number
   delay?: number
+  onClick?: () => void
 }
 
 const ActivityRecordCard: React.FC<PropsInterface> = (props) => {
   /*-- styled-component --*/
-    const ActivityRecordCardMain = styled(motion.div)`
+  const ActivityRecordCardMain = styled(motion.div)`
+    .card {
       display: flex;
       flex-flow: column;
 
@@ -25,6 +28,7 @@ const ActivityRecordCard: React.FC<PropsInterface> = (props) => {
       background-color: ${colors.white.default};
       border: solid 2px ${colors.black.default}10;
       border-radius: 0.5rem;
+      cursor: pointer;
 
       h3 {
         margin: 0px;
@@ -47,9 +51,11 @@ const ActivityRecordCard: React.FC<PropsInterface> = (props) => {
         bottom: 0.5rem;
         right: 1rem;
       }
-    `
+    }
+  `
 
   /*-- variables--*/
+  const [ isOpenDialog, updateIsOpenDialog ] = useState(false)
 
   /*-- functions --*/
 
@@ -57,41 +63,40 @@ const ActivityRecordCard: React.FC<PropsInterface> = (props) => {
 
   /*-- element  --*/
   return <>
-    <ActivityRecordCardMain
-      initial={{
-        scale: 0
-      }}
-      animate={{
-        scale: 1
-      }}
-      transition={{
-        type: 'spring',
-        duration: 0.6,
-        delay: props.delay
-      }}
-    >
-      <h3>
-        { props.contestName }
-      </h3>
-      <span className='record'>
-        <Icon
-          icon='military_tech'
-          fill
-        />
-        &ensp;{ props.record }
-      </span>
-      <span className='year'>
-        <Icon
-          icon='event'
-          fill
-        />
-        &ensp;{ props.year }年
-      </span>
-      <div className='open-icon'>
-        <Icon
-          icon='import_contacts'
-        />
-      </div>
+    <ActivityRecordCardMain>
+      <motion.div
+        onClick={() => { updateIsOpenDialog(true) }}
+        className='card'
+      >
+        <h3>
+          { props.contestName }
+        </h3>
+        <span className='record'>
+          <Icon
+            icon='military_tech'
+            fill
+          />
+          &ensp;{ props.record }
+        </span>
+        <span className='year'>
+          <Icon
+            icon='event'
+            fill
+          />
+          &ensp;{ props.year }年
+        </span>
+        <div className='open-icon'>
+          <Icon
+            icon='import_contacts'
+          />
+        </div>
+      </motion.div>
+      <Dialog
+        model={isOpenDialog}
+        onClose={() => { updateIsOpenDialog(false) }}
+        >
+        asd
+      </Dialog>
     </ActivityRecordCardMain>
   </>
 }

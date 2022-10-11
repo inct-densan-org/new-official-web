@@ -5,14 +5,17 @@ import colors from '~/styles/colors'
 
 const MyApp = ({ Component, pageProps }: AppPropsWithLayout ) => {
   const GlobalStyle = createGlobalStyle`
-    body {
+    html, body {
       padding: 0;
       margin: 0;
+      width: 100%;
+      height: auto;
 
       font-family: 'Noto Sans JP', sans-serif;
       color: ${ colors.black.default };
       background-color: ${ colors.white.darken[1] };
       overscroll-behavior-y: none;
+      overflow-x: hidden;
     }
 
     a {

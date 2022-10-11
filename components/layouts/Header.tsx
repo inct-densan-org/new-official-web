@@ -20,6 +20,7 @@ const Header: React.FC<PropsInterface> = (props) => {
     justify-content: center;
 
     position: fixed;
+    z-index: 90;
     top: 0px;
     left: 0px;
     width: 100vw;

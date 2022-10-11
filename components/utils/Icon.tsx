@@ -18,6 +18,7 @@ const Icon: React.FC<PropsInterface> = (props) => {
   const Icon = styled.span`
     color: ${props.color};
     font-variation-settings: 'FILL' ${props.fill ? 1 : 0}, 'wght' ${props.weight}, 'GRAD' ${props.grade}, 'opsz' ${props.opticalSize};
+    user-select: none;
   `
 
   return <>
